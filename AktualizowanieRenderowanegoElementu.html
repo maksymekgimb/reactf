@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React</title>
+    <title>JSX and Babel oraz pierwsza aplikacja REACT</title>
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -22,11 +22,21 @@
   </head>
   <body>
     <div id="box"></div>
-    <div id="content"></div>
-    <div id="embed"></div>
 
     <script type="text/babel">
-      
+      const newRoot = ReactDOM.createRoot(document.getElementById("box"));
+
+      function tick() {
+        const time = (
+          <div>
+            <h1>Witaj swiecie</h1>
+            <h2>Aktualny czas w Polsce to: {new Date().toLocaleTimeString()}.</h2>
+          </div>
+        );
+        newRoot.render(time);
+      }
+
+      setInterval(tick, 1000);
     </script>
   </body>
 </html>

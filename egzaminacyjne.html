@@ -22,45 +22,41 @@
   </head>
   <body>
     <div id="box"></div>
-    <div id="content"></div>
-    <div id="embed"></div>
 
     <script type="text/babel">
-      // function Welcome(props) {
-      //  return
-      //   <div>
-      //      <h1>Cześć, {props.name}</h1> <h1>Masz {props.age} Lat</h1>
-      //   </div>;
-      // }
-      // ES5 komponent funkcyjny z zawartością
+      const courses = [
+        "C#",
+        "Angular ",
+        "Django",
+      ];
+      const Show = (props) => {
+        return (
+          <div>
+            <h2>Liczba kursów {props.course}</h2>
+            <ol>
+              <li>{courses[0]}</li>
+              <li>{courses[1]}</li>
+              <li>{courses[2]}</li>
+            </ol>
+            <form>
+              <label>Imie i nazwisko</label>
 
-      // const Welcome = (props) => {
-      //   return
-      //   <div>
-      //     <h1>Cześć, {props.name}</h1> <h1>Masz {props.age} Lat</h1>
-      //   </div>;
-      // }; ES6 komponent funkcyjny z strzałkową deklaracją
+              <input type="text" />
 
-      class Welcome extends React.Component {
-        render() {
-          return (
-            <div>
-              <h1>Cześć, {this.props.name}</h1>{" "}
-              <h1>Masz {this.props.age} Lat</h1>
-            </div>
-          );
-        }
-      } // Komponent klasowy !!
+              <label>Numer kursu</label>
+
+              <input type="text" />
+
+              <input type="submit" value="Zapisz do kursu" />
+            </form>
+          </div>
+        );
+      };
+
       class App extends React.Component {
         render() {
-          return (
-            <div>
-              <Welcome name="Julia" age="19" />
-              <Welcome name="Dani" age="28" />
-              <Welcome name="Rippe" age="13" />
-            </div>
-          );
-        } 
+          return <Show course={courses.length} />;
+        }
       }
 
       const root = ReactDOM.createRoot(document.getElementById("box"));
