@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JSX and Babel oraz pierwsza aplikacja REACT</title>
+    <title>Document</title>
+    <title>Title</title>
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -20,47 +21,43 @@
       referrerpolicy="no-referrer"
     ></script>
   </head>
-  <body>
-    <div id="box"></div>
 
+  <body>
+    <div id="root"></div>
     <script type="text/babel">
-      const courses = [
-        "C#",
-        "Angular ",
+      const courseNames = [
+        "C++",
+        "Angular",
         "Django",
       ];
-      const Show = (props) => {
+      const courseList = courseNames.map((item) => (
+        <p>
+          <li>{item}</li>
+        </p>
+      ));
+      function Form(props) {
         return (
           <div>
-            <h2>Liczba kursów {props.course}</h2>
-            <ol>
-              <li>{courses[0]}</li>
-              <li>{courses[1]}</li>
-              <li>{courses[2]}</li>
-            </ol>
+            <h2> Liczba Kursów: {courseNames.length} </h2>
+            <ol>{courseList}</ol>
             <form>
-              <label>Imie i nazwisko</label>
-
-              <input type="text" />
-
-              <label>Numer kursu</label>
-
-              <input type="text" />
-
-              <input type="submit" value="Zapisz do kursu" />
+            <label>Imię i nazwisko: 
+              <p>
+                <input type="text" id="name" />
+              </p> </label>
+              <label>
+                <p>numer kursu:</p>
+                <input type="number" id="courseNumber" />{" "}
+              </label>
+              <p></p>
+              <input type="button" id="submit" value="Zapisz się do kursu" />
             </form>
-          </div>
+          </div>    
         );
-      };
-
-      class App extends React.Component {
-        render() {
-          return <Show course={courses.length} />;
-        }
       }
-
-      const root = ReactDOM.createRoot(document.getElementById("box"));
-      root.render(<App />);
+      const element = <Form />;
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(element);
     </script>
   </body>
 </html>
