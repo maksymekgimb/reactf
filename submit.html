@@ -1,11 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React</title>
-    <title>Tytul</title>
+    <title>Document</title>
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -21,53 +20,49 @@
       referrerpolicy="no-referrer"
     ></script>
   </head>
-
   <body>
-    <div id="root"></div>
+    <div id="page"></div>
+
     <script type="text/babel">
-      const courseNames = ["C++", "Angular", "Django"];
-      const courseList = courseNames.map((item) => (
-        <p>
-          <li>{item}</li>
-        </p>
-      ));
-      function Courses(props) {
-        function handleSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById("name");
-            console.log(name.value);
+      class Display extends React.Component {
+        render() {
+          return (
+            <div>
+              <form onSubmit={submitter}>
+                <h2>Course amount: {this.props.courses.length}</h2>
+                <ol>{coursesList}</ol>
+                <p>Full name:</p>
+                <input type="text" id="name" />
+                <p>Course nr:</p>
+                <input type="number" id="number" />
+                <input type="submit" value="sign up" />
+              </form>
+            </div>
+          );
         }
-        const listItems = props.courseNames.map((course, index) => (
-            <li key={index}>{course}</li>
-        ));
+      }
+      function submitter(e) {
+        e.preventDefault();
+        const name = document.getElementById("name");
+        console.log(name.value);
+        let number = document.getElementById("number").value;
+        if (number < 1 || number > courses.length) {
+          console.log("nie ma takiego kursu");
+          return 0;
+        }
 
-        return (
-          <div>
-            <h2> Liczba Kursow: {props.courseNames.lenth} </h2>
-            <ul>{listItems}</ul>
-
-            <form onSubmit={handleSubmit}>
-             <div id ="nameContainer">
-                <label>
-                    Imie i nazwisko:
-                    <input type="text" name="name" id="name"></input>
-                        </label>
-                        </div>
-                        <div id="courseContainer">
-                            <label>
-                                Numer kursu:
-                                <input type="number" name="number" id="number"></input>
-                                </label>
-                                </div>
-                                <p>
-                                    <button type="submit">Wyślij</button>
-                                    </p>
-                                    </form>
-                                    </div>
+        const listPos = parseInt(number);
+        console.log("Witaj uzytkowniku " + name.value);
+        console.log(
+          "Czekamy na twoje uczestnictwo w " + courses[listPos - 1] + " course"
         );
-                                }
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(<Courses courseNames={courseTab} />);
+      }
+      const root = ReactDOM.createRoot(document.getElementById("page"));
+      const courses = ["c#", "c++", "css"];
+      const coursesList = courses.map((data, index) => (
+        <li key={index}>{data}</li>
+      ));
+      root.render(<Display courses={coursesList} />);
     </script>
   </body>
 </html>
