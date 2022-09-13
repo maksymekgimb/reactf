@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSX and Babel oraz pierwsza aplikacja REACT</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.19.0/babel.min.js"
+      integrity="sha512-g9FNDzZ0L1+NX84LEwshW1z3FXXTMZccijKm3c7GQGHP440YRJ5JN57OzrJvdHMEWazpbDyh21x/AaAq+gOmmw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="box"></div>
+
+    <script type="text/babel">
+      const courses = [
+        "Programowanie w C#",
+        "Angular dla początkujących",
+        "Kurs Django",
+      ];
+      const listCourse = courses.map((item, index) => (
+        <li key={index}>{item}</li>
+      ));
+
+      function getElement(e) {
+        e.preventDefault();
+        const write = document.getElementById("imie");
+        console.log(write.value);
+        const numberCourse = document.getElementById("number").value;
+        const writeCourse = courses.forEach((item) =>
+          console.log(courses[numberCourse - 1])
+        );
+      }
+
+      const Show = (props) => {
+        return (
+          <div>
+            <h2>Liczba kursów {props.course}</h2>
+            <ol>{listCourse}</ol>
+            <form onSubmit={getElement}>
+              <div id="content">
+                <label id="poleImie">Imie i nazwisko</label>
+
+                <input type="text" id="imie" />
+              </div>
+              <div>
+                <label id="poleNumer">Numer kursu</label>
+
+                <input
+                  type="number"
+                  id="number"
+                  min="1"
+                  max={props.course.length}
+                />
+              </div>
+              <input type="submit" value="Zapisz do kursu" />
+            </form>
+          </div>
+        );
+      };
+
+      class App extends React.Component {
+        render() {
+          return <Show course={courses.length} />;
+        }
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("box"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
