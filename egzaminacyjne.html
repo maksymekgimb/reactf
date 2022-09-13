@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <title>Title</title>
+    <title>React</title>
+    <title>Tytul</title>
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -25,11 +25,7 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const courseNames = [
-        "C++",
-        "Angular",
-        "Django",
-      ];
+      const courseNames = ["C++", "Angular", "Django"];
       const courseList = courseNames.map((item) => (
         <p>
           <li>{item}</li>
@@ -38,21 +34,23 @@
       function Form(props) {
         return (
           <div>
-            <h2> Liczba Kursów: {courseNames.length} </h2>
+            <h2> Liczba Kursow: {courseNames.length} </h2>
             <ol>{courseList}</ol>
             <form>
-            <label>Imię i nazwisko: 
-              <p>
-                <input type="text" id="name" />
-              </p> </label>
               <label>
-                <p>numer kursu:</p>
+                Imię i nazwisko:
+                <p>
+                  <input type="text" id="name" />
+                </p>{" "}
+              </label>
+              <label>
+                <p>Number of course:</p>
                 <input type="number" id="courseNumber" />{" "}
               </label>
               <p></p>
-              <input type="button" id="submit" value="Zapisz się do kursu" />
+              <input type="button" id="submit" value="Submit to course" />
             </form>
-          </div>    
+          </div>
         );
       }
       const element = <Form />;

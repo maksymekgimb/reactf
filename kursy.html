@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.19.0/babel.min.js"
+    integrity="sha512-g9FNDzZ0L1+NX84LEwshW1z3FXXTMZccijKm3c7GQGHP440YRJ5JN57OzrJvdHMEWazpbDyh21x/AaAq+gOmmw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  </head>
+  <body>
+    <div id="page"></div>
+
+    <script type="text/babel">
+     class Display extends React.Component {
+        render() {
+            return (
+                <div>
+                    <h2>Course amount: {this.props.courses.length}</h2>
+                    <ol>
+                        <li>{this.props.courses[0]}</li>
+                        <li>{this.props.courses[1]}</li>
+                        <li>{this.props.courses[2]}</li>
+                        </ol>
+                        <p> Full name:</p>
+                        <input type="text" />
+                        <p>Course nr: </p>
+                        <input type="number" />
+                        <input type="button" value="sign up" />
+                        </div>
+            );
+        }
+     }
+
+const root = ReactDOM.createRoot(document.getElementById("page"));
+const Courses = ["c#", "C++", "css"];
+root.render(<Display courses ={Courses} />)
+    </script>
+  </body>
+</html>
